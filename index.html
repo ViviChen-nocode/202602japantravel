@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2026/2/8-2/16 旅遊天氣觀測</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <div class="eyebrow-row">
+            <p class="eyebrow">Travel Weather Dashboard</p>
+            <button id="refreshBtn" class="refresh-btn" type="button" aria-label="重新整理" title="重新整理">
+              <span class="refresh-icon" aria-hidden="true">⟳</span>
+            </button>
+          </div>
+          <h1>2026/2/8-2/16 旅遊天氣觀測</h1>
+          <p class="subtitle">台北 → 東京 → 富士河口湖 → 斑尾雪場 → 東京 → 台北</p>
+        </div>
+      </header>
+
+      <section class="mode-panel">
+        <div class="mode-switch" role="tablist" aria-label="看板模式">
+          <button id="todayModeBtn" class="mode-btn active" type="button" data-mode="today">今天總覽</button>
+          <button id="tomorrowModeBtn" class="mode-btn" type="button" data-mode="tomorrow">明天總覽</button>
+        </div>
+        <div class="date-switch" aria-label="後續日期">
+          <button class="day-btn" type="button" data-offset="2">--/--</button>
+          <button class="day-btn" type="button" data-offset="3">--/--</button>
+          <button class="day-btn" type="button" data-offset="4">--/--</button>
+          <label class="date-select-wrap">
+            <span>其他日期</span>
+            <select id="customDateSelect"></select>
+          </label>
+        </div>
+        <p id="planHint" class="plan-hint"></p>
+        <div class="location-panel">
+          <div class="location-panel-head">
+            <p>地點（預設當日行程，可手動調整）</p>
+            <button id="resetLocationsBtn" class="ghost-btn" type="button">還原當日行程</button>
+          </div>
+          <div id="locationFilters" class="location-filters"></div>
+        </div>
+      </section>
+
+      <section class="status-panel">
+        <p id="statusText">準備載入資料...</p>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>整天概況</h2>
+          <p id="dailySectionHint"></p>
+        </div>
+        <section id="cardsGrid" class="cards-grid" aria-live="polite"></section>
+      </section>
+
+      <section class="hourly-section">
+        <div class="section-head">
+          <h2 id="hourlyTitle">每小時天氣</h2>
+          <p id="hourlyHint"></p>
+        </div>
+        <div id="hourlyGrid" class="hourly-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="info-grid">
+        <article class="info-card">
+          <h2>雪場官方即時頁</h2>
+          <p>雪場營運與纜車開放，以官方頁更新最快。下方可直接點開查看。</p>
+          <div class="links">
+            <a href="https://www.madarao.jp/ski/" target="_blank" rel="noreferrer">Madarao Mountain Resort</a>
+            <a href="https://www.tangram.jp/ski/" target="_blank" rel="noreferrer">Tangram Ski Circus</a>
+          </div>
+        </article>
+        <article class="info-card">
+          <h2>資料來源</h2>
+          <p>天氣資料來自 Open-Meteo（免費、無 API Key）。</p>
+          <div class="links">
+            <a href="https://open-meteo.com/en/docs" target="_blank" rel="noreferrer">Open-Meteo Forecast API</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <template id="weatherCardTemplate">
+      <article class="weather-card">
+        <header class="card-header">
+          <h2 class="location-name"></h2>
+          <span class="location-meta"></span>
+        </header>
+        <section class="daily-overview-row">
+          <p class="overview-weather"></p>
+          <p class="overview-temp"></p>
+          <p class="overview-rain"></p>
+          <p class="overview-snow"></p>
+          <p class="trend-note"></p>
+        </section>
+        <section class="now-row">
+          <p class="metric-label">現在</p>
+          <p class="main-temp"></p>
+          <p class="main-desc"></p>
+          <div class="metric-side">
+            <p class="metric-line wind-line"></p>
+            <p class="metric-line precip-line"></p>
+            <p class="metric-line snow-line"></p>
+          </div>
+        </section>
+      </article>
+    </template>
+
+    <template id="hourlyCardTemplate">
+      <article class="hourly-card">
+        <header class="card-header">
+          <h3 class="location-name"></h3>
+          <span class="location-meta"></span>
+        </header>
+        <section class="hour-chips"></section>
+      </article>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

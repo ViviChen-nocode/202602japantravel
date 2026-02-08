@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANA 航班狀態看板</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    />
+    <link rel="stylesheet" href="./flight-status.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+    <main class="app-shell">
+      <header class="app-header">
+        <p class="eyebrow">Flight Status Board</p>
+        <h1>ANA 航班狀態看板</h1>
+        <p class="subtitle">只看兩段：2/8 NH854（去程）與 2/16 NH853（回程）</p>
+        <nav class="page-nav" aria-label="頁面導覽">
+          <a href="./index.html">看天氣頁</a>
+        </nav>
+      </header>
+
+      <section class="toolbar">
+        <p id="updatedAt" class="updated-at">最後更新：--</p>
+        <div class="toolbar-actions">
+          <button id="refreshBtn" type="button">重新抓取狀態</button>
+        </div>
+      </section>
+
+      <section id="cards" class="cards" aria-live="polite">
+        <p class="load-msg">載入航班資料中...</p>
+      </section>
+
+      <section class="hint-box">
+        <h2>說明</h2>
+        <p>
+          這頁是獨立頁面，不會影響原本天氣看板。航班狀態於頁面載入與「重新抓取狀態」時自動更新。
+        </p>
+      </section>
+    </main>
+
+    <template id="flightCardTemplate">
+      <article class="flight-card">
+        <header class="card-header">
+          <div>
+            <p class="flight-no"></p>
+            <h2 class="route"></h2>
+          </div>
+          <span class="day-tag"></span>
+        </header>
+
+        <section class="meta-row">
+          <p class="flight-date"></p>
+          <p class="flight-note"></p>
+        </section>
+
+        <section class="status-row">
+          <p class="status-main">狀態：讀取中...</p>
+          <p class="update-time"></p>
+          <p class="status-note"></p>
+        </section>
+
+        <section class="time-grid">
+          <article class="time-card">
+            <h3>出發</h3>
+            <p class="airport dep-airport"></p>
+            <p class="line">表定：<span class="dep-scheduled"></span></p>
+            <p class="line">預估/實際：<span class="dep-estimated"></span></p>
+            <p class="line">航廈 / 登機門：<span class="dep-terminal-gate"></span></p>
+          </article>
+          <article class="time-card">
+            <h3>抵達</h3>
+            <p class="airport arr-airport"></p>
+            <p class="line">表定：<span class="arr-scheduled"></span></p>
+            <p class="line">預估/實際：<span class="arr-estimated"></span></p>
+            <p class="line">航廈 / 登機門：<span class="arr-terminal-gate"></span></p>
+          </article>
+        </section>
+
+        <section class="links-row">
+          <a class="query-link flightstats-link" target="_blank" rel="noreferrer">FlightStats</a>
+          <a class="query-link flightradar-link" target="_blank" rel="noreferrer">Flightradar24</a>
+          <a class="query-link flightaware-link" target="_blank" rel="noreferrer">FlightAware</a>
+        </section>
+      </article>
+    </template>
+
+    <script src="./flight-status.js"></script>
+  </body>
+</html>

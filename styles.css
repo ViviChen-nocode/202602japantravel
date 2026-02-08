@@ -85,6 +85,26 @@ h1 {
   font-size: 0.95rem;
 }
 
+.page-nav {
+  margin-top: 0.5rem;
+}
+
+.page-nav a {
+  display: inline-block;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent-strong);
+  text-decoration: none;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.page-nav a:hover {
+  background: #eef5ff;
+}
+
 .refresh-btn {
   width: 20px;
   height: 20px;

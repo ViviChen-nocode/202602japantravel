@@ -1,7 +1,7 @@
 const itinerary = [
   { date: "2026-02-08", label: "2/8 台北 + 東京羽田", places: ["taipei", "haneda"] },
-  { date: "2026-02-09", label: "2/9 東京羽田 + 富士河口湖", places: ["haneda", "kawaguchiko"] },
-  { date: "2026-02-10", label: "2/10 富士河口湖", places: ["kawaguchiko"] },
+  { date: "2026-02-09", label: "2/9 東京羽田 + 富士野生動物園", places: ["haneda", "fujisafari"] },
+  { date: "2026-02-10", label: "2/10 河口湖 + 忍野八海", places: ["kawaguchiko", "oshino"] },
   { date: "2026-02-11", label: "2/11 富士河口湖 + 東京上野", places: ["kawaguchiko", "ueno"] },
   { date: "2026-02-12", label: "2/12 東京上野 + 斑尾東急 + 斑尾高原", places: ["ueno", "madarao_tokyu", "madarao_kogen"] },
   { date: "2026-02-13", label: "2/13 斑尾東急 + 斑尾高原", places: ["madarao_tokyu", "madarao_kogen"] },
@@ -13,7 +13,9 @@ const itinerary = [
 const locationMap = {
   taipei: { name: "台北", region: "Taiwan", lat: 25.033, lon: 121.5654, isSki: false },
   haneda: { name: "東京羽田", region: "Japan", lat: 35.5494, lon: 139.7798, isSki: false },
-  kawaguchiko: { name: "富士河口湖", region: "Japan", lat: 35.4874, lon: 138.7544, isSki: false },
+  fujisafari: { name: "富士野生動物園", region: "靜岡・裾野", lat: 35.2234, lon: 138.8676, isSki: false },
+  kawaguchiko: { name: "富士河口湖", region: "山梨・河口湖", lat: 35.4874, lon: 138.7544, isSki: false },
+  oshino: { name: "忍野八海", region: "山梨・忍野", lat: 35.4601, lon: 138.8294, isSki: false },
   ueno: { name: "東京上野", region: "Japan", lat: 35.7138, lon: 139.7773, isSki: false },
   madarao_tokyu: { name: "斑尾東急雪場", region: "Japan", lat: 36.8596, lon: 138.2876, isSki: true },
   madarao_kogen: { name: "斑尾高原雪場", region: "Japan", lat: 36.8524, lon: 138.2926, isSki: true },
